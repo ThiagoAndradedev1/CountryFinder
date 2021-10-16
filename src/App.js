@@ -1,13 +1,17 @@
 import React from "react";
-import logo from "./logo.svg";
+import { Route, Switch } from "react-router";
 import "./App.css";
+import CountryDetails from "./components/pages/CountryDetails";
 import Home from "./components/pages/Home";
 
 const App = () => {
   return (
-    <div>
-      <Home />
-    </div>
+    <>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/:id" component={CountryDetails} />
+      </Switch>
+    </>
   );
 };
 
