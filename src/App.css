@@ -426,9 +426,10 @@ button[disabled] {
   border: #ccc solid 1px;
 }
 
+.btn-warning,
 .badge-warning {
-  background: #ffeb3b;
-  color: #333;
+  background: #ffc918;
+  color: rgb(46, 46, 46);
 }
 
 .btn:hover {

@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="footer pb-40">
       <p className="footerTextSize">
-        Made with <i className="fas fa-heart text-danger"></i> by
+        Feito com <i className="fas fa-heart text-danger"></i> por
         @ThiagoAndradedev1
       </p>
     </div>

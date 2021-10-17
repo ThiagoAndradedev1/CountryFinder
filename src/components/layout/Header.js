@@ -22,13 +22,13 @@ const Header = () => {
             <Link to={`/about`} className="icon-bg-white">
               <h3 className="mr-20">
                 <i className="fas fa-address-card mr-8"></i>
-                About
+                Sobre
               </h3>
             </Link>
             <Link to={`/search`} className="icon-bg-white">
               <h3 className="mr-20">
                 <i className="fas fa-search mr-8"></i>
-                Search
+                Pesquisar
               </h3>
             </Link>
           </div>

@@ -1,18 +1,18 @@
 import React, { Fragment } from "react";
 import { useParams } from "react-router";
 import { useCountry } from "../../hooks/useCountry";
+import EarthHappy from "../../assets/earth_happy.jpg";
+import Spinner from "../layout/Spinner";
+import { ERROR_REQUEST } from "../../constants/constants";
 
 const Country = () => {
   const { id } = useParams();
 
   const { data, loading, error } = useCountry(id);
 
-  if (loading) return <div>Spinner...</div>;
+  if (loading) return <Spinner />;
 
-  if (error) return <div>Something went wrong...</div>;
-
-  console.log(data);
-  console.log(data.Country[0].capital);
+  if (error) return <div>{ERROR_REQUEST}</div>;
 
   return (
     <>
@@ -20,10 +20,16 @@ const Country = () => {
         {" "}
         <i className="fas fa-map-marked-alt mr-5 mt-15"></i> Detalhes do País
       </h1>
-      <div className="card grid-2">
+      <div className="card grid-2 fade-in">
         <div className="all-center">
+          {/* <img
+            src={data?.Country[0].flag.svgFile}
+            className="round-img widthImgAvatar"
+            alt="avatarurl"
+            width="150px"
+          /> */}
           <img
-            src={data.Country[0].flag.svgFile}
+            src={EarthHappy}
             className="round-img widthImgAvatar"
             alt="avatarurl"
             width="150px"
@@ -57,18 +63,6 @@ const Country = () => {
             </Fragment>
           </li>
         </ul>
-        {/* <Link
-              to={`/repos/${login}`}
-              className="btn btn-dark btn-sm text-center"
-            >
-              <i className="fas fa-box-open mr-5"></i> Repos
-            </Link>
-            <Link
-              to={`/starred/${login}`}
-              className="btn btn-dark btn-sm text-center"
-            >
-              <i className="fas fa-star mr-5"></i> Starred
-            </Link> */}
       </div>
     </>
   );

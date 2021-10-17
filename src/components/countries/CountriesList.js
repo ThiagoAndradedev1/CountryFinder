@@ -1,23 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useCountries } from "../../hooks/useCountries";
-import { useIsLoggedIn } from "../../hooks/useIsLoggedIn";
 import { isLoggedInVar } from "../../cache";
+import EarthHappy from "../../assets/earth_happy.jpg";
+import Spinner from "../layout/Spinner";
+import { ERROR_REQUEST } from "../../constants/constants";
 
 const CountriesList = () => {
   const { error, loading, data } = useCountries();
-  const status = useIsLoggedIn();
 
-  if (loading) return <div>Spinner...</div>;
+  if (loading) return <Spinner />;
 
-  if (error) return <div>Something went wrong...</div>;
-
-  console.log(data);
-
-  const login = () => {
-    localStorage.setItem("token", {});
-    isLoggedInVar(true);
-  };
+  if (error) return <div>{ERROR_REQUEST}</div>;
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -26,32 +20,59 @@ const CountriesList = () => {
 
   return (
     <>
-      {status ? <h1>Logado!</h1> : <h1>Deslogado!</h1>}
-      <button onClick={() => login()} className="btn btn-primary">
-        Login
+      <div className="text-center pb-10 mt-30">
+        <h1>
+          <i className="fas fa-house-user mr-5"></i> Página Incial
+        </h1>
+      </div>
+      <button
+        className="btn btn-danger btn-block mt-15"
+        onClick={() => logout()}
+      >
+        <i className="fas fa-sign-out-alt mr-5"></i> Logout
       </button>
-      <button onClick={() => logout()} className="btn btn-primary">
-        Logout
-      </button>
-      {/* <img src={git} className="gitImg" alt="usergit" /> */}
-      {/* <h1 className="text-center pb-10">CONHEÇA MAIS DO MUNDO!</h1> */}
-      <div className="grid-3">
+      <div className="grid-3 fade-in">
         {data.Country.map((ctr) => {
           return (
-            <Link to={`/details/${ctr._id}`}>
-              <div key={ctr._id} className="card text-center container">
-                {/* <div className="all-center">
-                  <img
+            <Link key={ctr._id} to={`/details/${ctr._id}`}>
+              <div className="card text-center container">
+                <div className="all-center">
+                  {/* <img
                     src={ctr.flag.svgFile}
-                    className="round-img widthImgAvatar"
+                    className="round-img widthImgAvatar mb-8"
+                    alt="avatarurl"
+                    width="150px"
+                  /> */}
+                  <img
+                    src={EarthHappy}
+                    className="round-img widthImgAvatar mb-8"
                     alt="avatarurl"
                     width="150px"
                   />
-                </div> */}
-                <h1 className="text-dark nameStyle text-center">{ctr.name}</h1>
-                <h1 className="text-dark nameStyle text-center">
-                  {ctr.capital}
-                </h1>
+                </div>
+                {ctr.name && (
+                  <>
+                    <h1 className="text-dark nameStyle text-center">País:</h1>
+                    <div>
+                      <h1 className="text-dark nameStyle text-center badge badge-success">
+                        {ctr.name}
+                      </h1>
+                    </div>
+                  </>
+                )}
+                {ctr.capital && (
+                  <>
+                    <h1 className="text-dark nameStyle text-center mt-10">
+                      Capital:
+                    </h1>
+
+                    <div>
+                      <h1 className="text-dark nameStyle text-center badge badge-danger">
+                        {ctr.capital}
+                      </h1>
+                    </div>
+                  </>
+                )}
               </div>
             </Link>
           );

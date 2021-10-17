@@ -5,6 +5,9 @@ import {
   useSearchCountry,
 } from "../../hooks/useSearchCountry";
 import { convertToPascalCase } from "../../utils/utils";
+import EarthHappy from "../../assets/earth_happy.jpg";
+import Spinner from "../layout/Spinner";
+import { ERROR_EMPTY_SEARCH, ERROR_REQUEST } from "../../constants/constants";
 
 const SearchCountry = () => {
   const [name, setName] = useState("");
@@ -48,7 +51,6 @@ const SearchCountry = () => {
   };
 
   const modifyCache = () => {
-    console.log(population);
     client.writeQuery({
       query: GET_COUNTRY_BY_NAME,
       variables: { name },
@@ -81,7 +83,21 @@ const SearchCountry = () => {
 
   return (
     <>
+      <h1 className="text-center">
+        <i className="fas fa-map-marker-alt mr-5 mt-30"></i> Pesquisar por
+        países
+      </h1>
       <form className="form">
+        {searchError && (
+          <div className="alert alert-danger">
+            <h4 className="text-center">{ERROR_EMPTY_SEARCH}</h4>
+          </div>
+        )}
+        {data?.Country.length === 0 && (
+          <div className="alert alert-danger">
+            <h4 className="text-center">{ERROR_REQUEST}</h4>
+          </div>
+        )}
         <input
           type="text"
           name="text"
@@ -97,21 +113,25 @@ const SearchCountry = () => {
           <i className="fas fa-search mr-5"></i> Pesquisar
         </button>
       </form>
-      {loading && <h1>Loading...</h1>}
-      {searchError && <h1>Você precisa digitar algo...</h1>}
-      {data?.Country.length === 0 && <h1>Something went wrong...</h1>}
+      {loading && <Spinner />}
       {data?.Country.length > 0 && (
         <div className="fade-in">
           <button
             onClick={() => openFormInfo()}
-            className="btn btn-light btn-block mt-10"
+            className="btn btn-warning btn-block mt-10"
           >
             <i className="far fa-edit mr-5"></i> Editar Informações
           </button>
           <div className="card grid-2">
             <div className="all-center">
-              <img
+              {/* <img
                 src={data?.Country[0].flag.svgFile}
+                className="round-img widthImgAvatar"
+                alt="avatarurl"
+                width="150px"
+              /> */}
+              <img
+                src={EarthHappy}
                 className="round-img widthImgAvatar"
                 alt="avatarurl"
                 width="150px"

@@ -20,7 +20,6 @@ const GET_COUNTRY = gql`
 `;
 
 export const useCountry = (id) => {
-  console.log(id);
   const { error, loading, data } = useQuery(GET_COUNTRY, {
     variables: {
       id,

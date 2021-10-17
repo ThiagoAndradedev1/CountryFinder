@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import spinner from "./spinner.svg";
+import spinner from "../../assets/spinner_earth.gif";
 
 const Spinner = () => {
   return (

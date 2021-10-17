@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { isLoggedInVar } from "../../cache";
+import { ERROR_INVALID_EMAIL_AND_PASSWORD } from "../../constants/constants";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -24,8 +25,9 @@ const Login = () => {
   return (
     <div>
       <div className="centerAboutElements">
-        <i class="fas fa-clipboard-check fa-3x"></i>
+        <i className="fas fa-clipboard-check fa-3x"></i>
         <h1 className="mb-20">Login</h1>
+
         <h3>Email:</h3>
         <input
           type="text"
@@ -42,10 +44,14 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {loginError && (
-          <h3 className="text-danger">A sua senha ou email são invalidos...</h3>
-        )}
       </div>
+      {loginError && (
+        <div className="alert alert-danger">
+          <h4 className="text-light text-center">
+            {ERROR_INVALID_EMAIL_AND_PASSWORD}
+          </h4>
+        </div>
+      )}
       <button
         type="submit"
         onClick={(e) => loginUser(e)}
