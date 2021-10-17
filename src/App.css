@@ -435,6 +435,11 @@ button[disabled] {
   opacity: 0.8;
 }
 
+.btn-dark-blue {
+  background-color: #333743;
+  color: white;
+}
+
 .bg-light,
 .badge-light {
   border: #ccc solid 1px;
@@ -583,5 +588,18 @@ table th {
   .navbar ul {
     text-align: center;
     justify-content: center;
+  }
+}
+
+.fade-in {
+  animation: fadeInAnimation ease 2s;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
