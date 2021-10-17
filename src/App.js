@@ -8,6 +8,8 @@ import Home from "./components/pages/Home";
 import Search from "./components/pages/Search";
 import Footer from "./components/layout/Footer";
 import NotFound from "./components/pages/NotFound";
+import PrivateRoute from "./private/PrivateRoute";
+import Auth from "./components/pages/Auth";
 
 const App = () => {
   return (
@@ -16,10 +18,15 @@ const App = () => {
         <Header />
         <div className="container">
           <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/search" component={Search} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/details/:id" component={CountryDetails} />
+            <Route exact path="/login" component={Auth} />
+            <PrivateRoute exact path="/" component={Home} />
+            <PrivateRoute exact path="/search" component={Search} />
+            <PrivateRoute exact path="/about" component={About} />
+            <PrivateRoute
+              exact
+              path="/details/:id"
+              component={CountryDetails}
+            />
             <Route component={NotFound} />
           </Switch>
         </div>

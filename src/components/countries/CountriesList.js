@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Fragment } from "react/cjs/react.production.min";
 import { useCountries } from "../../hooks/useCountries";
+import { useIsLoggedIn } from "../../hooks/useIsLoggedIn";
+import { isLoggedInVar } from "../../cache";
 
 const CountriesList = () => {
   const { error, loading, data } = useCountries();
+  const status = useIsLoggedIn();
 
   if (loading) return <div>Spinner...</div>;
 
@@ -12,8 +14,25 @@ const CountriesList = () => {
 
   console.log(data);
 
+  const login = () => {
+    localStorage.setItem("token", {});
+    isLoggedInVar(true);
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    isLoggedInVar(false);
+  };
+
   return (
-    <Fragment>
+    <>
+      {status ? <h1>Logado!</h1> : <h1>Deslogado!</h1>}
+      <button onClick={() => login()} className="btn btn-primary">
+        Login
+      </button>
+      <button onClick={() => logout()} className="btn btn-primary">
+        Logout
+      </button>
       {/* <img src={git} className="gitImg" alt="usergit" /> */}
       {/* <h1 className="text-center pb-10">CONHEÇA MAIS DO MUNDO!</h1> */}
       <div className="grid-3">
@@ -38,7 +57,7 @@ const CountriesList = () => {
           );
         })}
       </div>
-    </Fragment>
+    </>
   );
 };
 
