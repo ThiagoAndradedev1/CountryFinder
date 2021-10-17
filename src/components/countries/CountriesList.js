@@ -16,7 +16,6 @@ const CountriesList = () => {
     <Fragment>
       {/* <img src={git} className="gitImg" alt="usergit" /> */}
       {/* <h1 className="text-center pb-10">CONHEÇA MAIS DO MUNDO!</h1> */}
-      <h1>Home</h1>
       <div className="grid-3">
         {data.Country.map((ctr) => {
           return (
