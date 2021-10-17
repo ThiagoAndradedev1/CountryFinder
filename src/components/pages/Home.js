@@ -5,7 +5,6 @@ import SearchCountry from "../countries/SearchCountry";
 const Home = () => {
   return (
     <>
-      <SearchCountry />
       <CountriesList />
     </>
   );
