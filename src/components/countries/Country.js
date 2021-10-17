@@ -18,7 +18,7 @@ const Country = () => {
     <>
       <h1 className="text-center">
         {" "}
-        <i className="fas fa-map-marked-alt mr-5"></i> Detalhes do País
+        <i className="fas fa-map-marked-alt mr-5 mt-15"></i> Detalhes do País
       </h1>
       <div className="card grid-2">
         <div className="all-center">
