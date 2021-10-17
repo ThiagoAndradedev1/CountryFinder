@@ -19,6 +19,12 @@ const Header = () => {
             About
           </h3>
         </Link>
+        <Link to={`/search`} className="icon-bg-white">
+          <h3 className="mr-20">
+            <i className="fas fa-search mr-8"></i>
+            Search
+          </h3>
+        </Link>
       </div>
     </div>
   );
