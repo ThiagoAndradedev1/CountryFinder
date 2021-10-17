@@ -1,11 +1,13 @@
 import { gql, useLazyQuery } from "@apollo/client";
 
-const GET_COUNTRY_BY_NAME = gql`
+export const GET_COUNTRY_BY_NAME = gql`
   query GetCountryByName($name: String!) {
     Country(name: $name) {
       _id
       capital
       name
+      area
+      population
       flag {
         svgFile
       }
