@@ -5,6 +5,10 @@ const GET_COUNTRY = gql`
     Country(_id: $id) {
       _id
       capital
+      name
+      area
+      population
+
       flag {
         svgFile
       }
