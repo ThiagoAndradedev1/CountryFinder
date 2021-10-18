@@ -55,24 +55,22 @@ const CountriesList = () => {
                     <h1 className="text-dark nameStyle text-center">País:</h1>
                     <div>
                       <h1 className="text-dark nameStyle text-center badge badge-success">
-                        {ctr.name}
+                        {ctr.name} - {ctr.flag.emoji}
                       </h1>
                     </div>
                   </>
                 )}
-                {ctr.capital && (
-                  <>
-                    <h1 className="text-dark nameStyle text-center mt-10">
-                      Capital:
-                    </h1>
+                <>
+                  <h1 className="text-dark nameStyle text-center mt-10">
+                    Capital:
+                  </h1>
 
-                    <div>
-                      <h1 className="text-dark nameStyle text-center badge badge-danger">
-                        {ctr.capital}
-                      </h1>
-                    </div>
-                  </>
-                )}
+                  <div>
+                    <h1 className="text-dark nameStyle text-center badge badge-danger">
+                      {ctr.capital ? ctr.capital : "Doest not exist!"}
+                    </h1>
+                  </div>
+                </>
               </div>
             </Link>
           );

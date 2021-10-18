@@ -7,6 +7,7 @@ const GET_COUNTRIES = gql`
       capital
       name
       flag {
+        emoji
         svgFile
       }
       topLevelDomains {
