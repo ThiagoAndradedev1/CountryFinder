@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+<p align="center">
+  <a href="" rel="noopener">
+ <img src="https://user-images.githubusercontent.com/63686057/137713822-24c6911c-597a-4157-a16e-ba8e0f156d3a.png" alt="Logo do Projeto"></a>
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h3 align="center">CountryFinder</h3>
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+<p align="center"> Projeto realizado utilizando a API da Softplan e as ferramentas do React/Apollo.
+    <br> 
+</p>
 
-### `npm start`
+## 🔥 OBSERVAÇÕES:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+A imagem referente a bandeira dos países está sendo retornada com problema da API, então decidi optar por colocar uma imagem fixa no lugar da bandeira. Também tentei dar deploy no projeto mas devido ao fato da API não usar "https", retorna um erro de mixed content em qualquer serviço de hospedagem que reforce SSL. Impossibilitando seu deploy de forma efetiva.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📝 Índice
 
-### `npm test`
+- [Sobre](#sobre)
+- [Primeiros Passos](#primeiros_passos)
+- [Feito Com](#feito_com)
+- [Autores](#autores)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🧐 Sobre <a name = "sobre"></a>
 
-### `npm run build`
+Neste projeto foi utilizado o Apollo Client para manejar os dois tipos de estados:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Do lado do cliente
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+O apollo disponibiliza a possibilidade de manejar estados que só são relevantes para o cliente: um booleano que identifica se o usuário está logado ou não, uma configuração que indica se o usuário escolheu um tema escuro e etc. No geral essa configuração tem como objetivo substituir o uso do Context API na aplicação, permitindo que tanto o estado do lado do cliente, quanto do servidor sejam acessados através da API do apollo. No caso dessa aplicação foi utilizado no lado do cliente um estado de **isLoggedIn** para identificar se o usuário realizou o login com sucesso ou não, utilizando rotas privadas para limitar o acesso.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Do lado do servidor
 
-### `npm run eject`
+O apollo disponibiliza a possibilidade de manejar estados que tem a ver com lado do servidor. O que possibilita manter um cache, afim de evitar diversas requisições para o mesmo resource. Na aplicação todas requisições foram feitas utilizando o Apollo.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Foi feita a listagem de todos os países e também foi aplicado paginação na hora de exibir as informações na página principal. A aplicação também permite que o usuário acesse a página de detalhes de cada país, onde é exibido mais informações referente ao país que ele clicou. O usuário pode pesquisar por países e alterar as informações através de um formulário feito para modificar as informações no lado do cliente.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### LOGIN PARA TESTES:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+Email: john@gmail.com
+Password: 123456
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 🏁 Primeiros Passos <a name = "primeiros_passos"></a>
 
-## Learn More
+Estas intruçōes te darão uma cópia funcional do projeto na sua máquina local para desenvolvimento e testes.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Pré-requisitos
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Instalação
 
-### Code Splitting
+Para rodar o app basta clonar o projeto e executar
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+NPM INSTALL
+```
 
-### Analyzing the Bundle Size
+```
+NPM START
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Outras dúvidas podem ser sanadas pelo repositório do [Create React App.](https://github.com/facebook/create-react-app)
 
-### Making a Progressive Web App
+## ⛏️ Feito Com <a name = "feito_com"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [ReactJs](https://reactjs.org) - Web Framework
+- [Apollo](https://www.apollographql.com/) - Apollo Client
 
-### Advanced Configuration
+## ✍️ Autores <a name = "autores"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [@ThiagoAndradedev1](https://github.com/ThiagoAndradedev1) - Ideia & Trabalho inicial
