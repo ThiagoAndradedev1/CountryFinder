@@ -7,7 +7,7 @@
 
 ---
 
-<p align="center"> Projeto realizado utilizando a API da Softplan e as ferramentas do React/Apollo.
+<p align="center"> Projeto realizado utilizando a API da Softplan e as ferramentas do React/Apollo. Dentro do tempo limite previamente combinado. (48 horas)
     <br> 
 </p>
 
