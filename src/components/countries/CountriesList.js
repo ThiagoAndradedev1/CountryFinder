@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useCountries } from "../../hooks/useCountries";
 import { isLoggedInVar } from "../../cache";
 import EarthHappy from "../../assets/earth_happy.jpg";
 import Spinner from "../layout/Spinner";
 import { ERROR_REQUEST } from "../../constants/constants";
+import Pagination from "../layout/Pagination";
 
 const CountriesList = () => {
   const { error, loading, data } = useCountries();
+
+  const [countries, setCountries] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [countriesPerPage] = useState(12);
+
+  useEffect(() => {
+    if (data) {
+      setCountries(data.Country);
+    }
+  }, [data]);
 
   if (loading) return <Spinner />;
 
@@ -17,6 +28,14 @@ const CountriesList = () => {
     localStorage.removeItem("token");
     isLoggedInVar(false);
   };
+
+  // Get current posts
+  const indexOfLastPost = currentPage * countriesPerPage;
+  const indexOfFirstPost = indexOfLastPost - countriesPerPage;
+  const currentCountries = countries.slice(indexOfFirstPost, indexOfLastPost);
+
+  // Change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
@@ -32,7 +51,7 @@ const CountriesList = () => {
         <i className="fas fa-sign-out-alt mr-5"></i> Logout
       </button>
       <div className="grid-3 fade-in">
-        {data.Country.map((ctr) => {
+        {currentCountries.map((ctr) => {
           return (
             <Link key={ctr._id} to={`/details/${ctr._id}`}>
               <div className="card text-center container">
@@ -76,6 +95,11 @@ const CountriesList = () => {
           );
         })}
       </div>
+      <Pagination
+        countriesPerPage={countriesPerPage}
+        totalCountries={countries.length}
+        paginate={paginate}
+      />
     </>
   );
 };
